@@ -1,0 +1,124 @@
+@import "normalize.css";
+
+$white: white;
+$blackish: #222;
+$primary: red;
+
+$medium: 576px;
+$large: 992px;
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: $blackish;
+  color: $white;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+button {
+  border: 1px solid transparent;
+  background: $primary;
+  color: $white;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#users {
+  list-style-type: none;
+  padding: 0;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media screen and (min-width: $medium) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: $large) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  > li {
+    overflow: hidden;
+    display: grid;
+    justify-content: start;
+    align-items: center;
+    grid-template-areas:
+      "photo name"
+      "photo dob"
+      "photo phone";
+
+    > .photo {
+      grid-area: photo;
+      margin-right: 0.6rem;
+      width: 70px;
+    }
+
+    > .name {
+      grid-area: name;
+      font-weight: bold;
+    }
+
+    > .dob {
+      grid-area: dob;
+    }
+
+    > .phone {
+      grid-area: phone;
+    }
+  }
+}
+
+#filters {
+  display: flex;
+
+  /* a filter */
+  > * {
+    margin-right: 2rem;
+    display: flex;
+
+    &:last-child {
+      margin-right: inherit;
+    }
+
+    /* a filter control */
+    > * {
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: inherit;
+      }
+    }
+  }
+}
